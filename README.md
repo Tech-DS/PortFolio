@@ -19,5 +19,5 @@
 祖父母や孫が好きな時に感じたままに写真や文章を投稿し閲覧する、祖父母がふと過去の出来事を思い出した時その時の感情や教訓を書き記す。
 
 
-チャレンジ機能一覧
+チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/17_8MR5PDP8TWhQGTDJZ4uV0OIfmcJh2V5TeduYXUnQ0/edit?usp=sharing
