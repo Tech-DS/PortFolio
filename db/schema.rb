@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_12_10_161711) do
 
   create_table "juniors", force: :cascade do |t|
+    t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_161711) do
   end
 
   create_table "seniors", force: :cascade do |t|
+    t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
