@@ -1,0 +1,38 @@
+<div class="container">
+ <h2>つぶやき</h2>
+ <%= form_with model:@post, url: posts_path, method: :post, local:true do |f| %>
+  <div class="field row">
+    <%= f.label :こんな事があったよ %>
+    <%= f.text_area :body, class: 'col-xs-12 post_body' %>
+  </div>
+  <div class="field row">
+    <%= f.label :写真 %>
+
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit "つぶやく", class: 'btn btn-primary col-xs-12' %>
+  </div>
+<% end %>
+
+ 		<table class="table table-hover table-inverse">
+			<thead>
+				<tr>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @posts.each do |post| %>
+				  <td><%= attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg' %></td>
+					<td><%= post.body %></td>
+					<td><%= post.created_at.to_s(:datetime_base) %></td>
+          <td><%= link_to "詳細" , post, class: 'btn btn-outline-info' %></td>
+          <td><%= link_to "削除" , post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+</div>

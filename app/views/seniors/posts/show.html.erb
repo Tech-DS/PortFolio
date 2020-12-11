@@ -1,0 +1,13 @@
+<div class=container>
+ <dev class=row>
+  <h1><%= @post.body %></h1>
+  <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
+  
+  
+  
+  
+  <td><%= link_to "戻る", posts_path, class: 'btn btn-outline-info' %></td>
+ </div> 
+</div>
+
+
