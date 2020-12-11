@@ -1,0 +1,2 @@
+module Seniors::PostsHelper
+end

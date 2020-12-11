@@ -1,2 +1,7 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<h1>あなたは祖父母ですか？</h1>
+<h2><%= link_to '新規', new_senior_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></h2>
+<h2><%= link_to 'ログイン', new_senior_session_path, class: 'glyphicon glyphicon-log-in sign_in'%></h2>
+
+<h1>あなたは孫ですか？</h1>
+<h2><%= link_to '新規', new_junior_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></h2>
+<h2><%= link_to 'ログイン', new_junior_session_path, class: 'glyphicon glyphicon-log-in sign_in'%></h2>
