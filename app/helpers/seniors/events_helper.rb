@@ -1,0 +1,2 @@
+module Seniors::EventsHelper
+end

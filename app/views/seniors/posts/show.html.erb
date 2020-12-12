@@ -2,12 +2,11 @@
  <dev class=row>
   <h1><%= @post.body %></h1>
   <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
-  
-  
-  
-  
+
+
+  <td><%= link_to "編集" , edit_post_path, class: 'btn btn-outline-info' %></td>
   <td><%= link_to "戻る", posts_path, class: 'btn btn-outline-info' %></td>
- </div> 
+ </div>
 </div>
 
 
