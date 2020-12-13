@@ -1,0 +1,18 @@
+<div class="container">
+ <h2>編集</h2>
+ <%= form_with model:@post, url: posts_path, method: :post, local:true do |f| %>
+  <div class="field row">
+    <%= f.label :こんな事があったよ %>
+    <%= f.text_area :body, class: 'col-xs-12 post_body' %>
+  </div>
+  <div class="field row">
+    <%= f.label :写真 %>
+
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit "更新", class: 'btn btn-primary col-xs-12' %>
+  </div>
+  <% end %>
+ </div>

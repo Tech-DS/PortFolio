@@ -1,0 +1,28 @@
+<div class="container">
+ <div class="row">
+<%= form_with(model: @event, local: true) do |f| %>
+
+  <div class="row">
+    <%= f.label :予定の名前 %>
+    <%= f.text_field :title %>
+  </div>
+
+    <div class="row">
+    <%= f.label :日時 %>
+    <%= f.datetime_select :start_time %>
+  </div>
+
+  <div class="row">
+    <%= f.label :内容 %>
+    <%= f.text_field :content %>
+  </div>
+
+
+  <div class="submit">
+    <%= f.submit "カレンダーに追加"%>
+  </div>
+
+<% end %>
+
+</div>
+</div>
