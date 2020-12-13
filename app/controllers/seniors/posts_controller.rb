@@ -19,7 +19,7 @@ class Seniors::PostsController < ApplicationController
     end
   end
 
-  def index　#ユーザーIDでソートをかける（相互フォローのみ）
+  def index #ユーザーIDでソートをかける（相互フォローのみ）
      @posts = Post.all
      @post = Post.new
   end
