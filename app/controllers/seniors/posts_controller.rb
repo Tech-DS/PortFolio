@@ -26,6 +26,7 @@ class Seniors::PostsController < ApplicationController
 
   def show
      @post = Post.find(params[:id])
+     @post_comment = PostComment.new
   end
 
   def destroy
@@ -53,5 +54,9 @@ class Seniors::PostsController < ApplicationController
   def post_params
      params.require(:post).permit(:body, :image)
   end
-
+  
+  def post_comment_params
+    params.require(:post_comment).permit(:comment)
+  end
+  
 end

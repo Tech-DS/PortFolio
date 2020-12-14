@@ -14,15 +14,18 @@ Rails.application.routes.draw do
    registrations: 'juniors/registrations'
  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+   resources :posts, only: [] do
+    resources :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+   end
 
    scope module: :seniors do
+
      resources :posts, only: [:index, :new, :create, :show, :edit, :destroy]
-     resources :post_comments, only: [:create, :destroy]
 
     root to: 'events#index'
      resources :events
   end
-
 
 
 end
