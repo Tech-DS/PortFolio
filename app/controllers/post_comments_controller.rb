@@ -1,11 +1,13 @@
 class PostCommentsController < ApplicationController
 
   def create
-    post = Post.find(params[:post_id])
-    comment = current_senior.post_comments.new(post_comment_params)
-    comment.post_id = post.id
-    comment.save
-    redirect_to post_path(post)
+    if current_senior
+      create_post_comment(current_senior)
+      redirect_to post_path(post)
+    elsif current_junior
+      create_post_comment(current_junior)
+      redirect_to post_path(post)
+    end
   end
 
   def destroy
@@ -18,4 +20,10 @@ class PostCommentsController < ApplicationController
     params.require(:post_comment).permit(:comment)
   end
 
+  def create_post_comment(user)
+    post = Post.find(params[:post_id])
+    comment = user.post_comments.new(post_comment_params)
+    comment.post_id = post.id
+    comment.save
+  end
 end
