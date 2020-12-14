@@ -1,25 +1,19 @@
 <div class=container>
  <dev class=row>
-  <h1><%= @post.body %></h1>
+  <h2><%= @post.body %></h2>
   <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
-
-
-
-
-  <i class="fa fa-comment"></i>
-  <a href="#comments"><%= @post.post_comments.count %></a>
-
+  <td><%= link_to "編集" , edit_post_path, class: 'btn btn-outline-info' %></td>
 
   <div class="comment-list bt style-2" id="comments">
   <div class="float-wrapper">
-    <h2 class="comment-count"><%= @post.post_comments.count %>件コメント</h2>
+    <h3 class="comment-count"><%= @post.post_comments.count %>件コメント</h3>
   </div>
 
 
   <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
   <div class="row">
     <div class="col-sm-12">
-      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+      <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
     </div>
   </div>
   <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
@@ -76,7 +70,7 @@
 
 
 
-  <td><%= link_to "編集" , edit_post_path, class: 'btn btn-outline-info' %></td>
+  
   <td><%= link_to "戻る", posts_path, class: 'btn btn-outline-info' %></td>
  </div>
 </div>

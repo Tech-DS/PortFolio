@@ -20,7 +20,7 @@ class Seniors::PostsController < ApplicationController
   end
 
   def index #ユーザーIDでソートをかける（相互フォローのみ）
-     @posts = Post.all
+     @posts = Post.all.order(created_at: :desc)
      @post = Post.new
   end
 

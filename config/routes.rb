@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
      resources :posts, only: [:index, :new, :create, :show, :edit, :destroy]
 
+     resources :timelines, only: [:index, :new, :create, :show, :edit, :destroy]
     root to: 'events#index'
      resources :events
   end

@@ -1,0 +1,10 @@
+<div class="container">
+    <tr>
+      <td><%= @timeline.year %></td>
+      <td><%= @timeline.age %></td>
+      <td><%= @timeline.event %></td>
+      <td><%= @timeline.detail %></td>
+      <td><%= @timeline.feel %></td>
+      <td><%= attachment_image_tag @timeline, :image, :fill, 100, 100, format: 'jpeg' %></td>
+    </tr>
+</div>

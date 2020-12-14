@@ -3,10 +3,10 @@ class PostCommentsController < ApplicationController
   def create
     if current_senior
       create_post_comment(current_senior)
-      redirect_to post_path(post)
+      redirect_to post_path(params[:post_id])
     elsif current_junior
       create_post_comment(current_junior)
-      redirect_to post_path(post)
+      redirect_to post_path(params[:post_id])
     end
   end
 
