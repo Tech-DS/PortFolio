@@ -33,7 +33,13 @@ class DeviseCreateSeniors < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
+      t.string :name_kana
+      t.string :profile_image_id
+      t.string :icon_image_id
+      t.date :birth_date
+      t.string :address
+      t.string :phone_number
+      
       t.timestamps null: false
     end
 

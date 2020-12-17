@@ -3,5 +3,6 @@ class HomesController < ApplicationController
   end
   
   def about
+    @seniors= Senior.all
   end
 end

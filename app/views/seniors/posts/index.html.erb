@@ -33,6 +33,8 @@
       <tbody>
           <% @posts.each do |post| %>
           <tr>
+        　 <td><%#= attachment_image_tag @seniors, :profile_image, :fill, 30, 30, format: 'jpeg' %></td>
+        　 <td><%= @seniors.name %></td>
            <td><%= attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg' %></td>
            <td><%= post.body %></td>
            <td><%= post.created_at.to_s(:datetime_base) %></td>
@@ -45,3 +47,5 @@
 	  </div>
  </table>
  </div>
+
+

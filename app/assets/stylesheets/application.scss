@@ -16,3 +16,18 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+@font-face {
+  font-family: 'ipaexg';
+  src: font-url('ipaexg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+head {
+  font-family: ipaexg;
+}
+
+body {
+  font-family: ipaexg;
+}

@@ -1,0 +1,34 @@
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <table class="table table-hover table-inverse">
+      <thead>
+          <tr>
+              <th></th>
+              <th>名前</th>
+              <th>ふりがな</th>
+              <th>生年月日</th>
+              <th>住所</th>
+              <th>電話番号</th>
+              <th colspan="4"></th>
+          </tr>
+      </thead>
+      <div class="col-12">
+      <tbody>
+          <tr>
+           <td><%= attachment_image_tag @senior, :profile_image, :fill, 100, 100, format: 'jpeg' %></td>
+           <td><%= @senior.name %></td>
+           <td><%= @senior.name_kana %></td>
+           <td><%= @senior.birth_date %></td>
+           <td><%= @senior.address %></td>
+           <td><%= @senior.phone_number %></td>
+		      </tr>
+	  </tbody>
+	  </div>
+    </table>
+  </div>
+</div>
+<div class="container">
+ <%= link_to ' プロフィール編集', edit_profile_path(@senior.id), class: 'glyphicon glyphicon-user' %>
+</div>

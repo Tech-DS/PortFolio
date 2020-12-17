@@ -1,5 +1,6 @@
 class Seniors::PostsController < ApplicationController
- 
+  before_action :ensure_current_senior, {only: [:edit, :update, :show]}
+
   def new
       @post = Post.new
   end
@@ -22,6 +23,7 @@ class Seniors::PostsController < ApplicationController
   def index #ユーザーIDでソートをかける（相互フォローのみ）
      @posts = Post.all.order(created_at: :desc)
      @post = Post.new
+     @seniors = Senior.all
   end
 
   def show
@@ -54,9 +56,17 @@ class Seniors::PostsController < ApplicationController
   def post_params
      params.require(:post).permit(:body, :image)
   end
-  
+
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-  
+
+
+  def ensure_current_senior
+    @post = Post.find(params[:id])
+   if current_senior.id != @post.senior_id.to_i
+    flash[:notice]="権限がありません"
+    redirect_to("/posts/index")
+   end
+  end
 end

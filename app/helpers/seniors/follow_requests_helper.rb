@@ -1,0 +1,2 @@
+module Seniors::FollowRequestsHelper
+end
