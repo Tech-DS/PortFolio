@@ -1,0 +1,17 @@
+<br>
+<br>
+<table class= "table table-condensed">
+  <tr>
+    <td>
+      名前
+    </td>
+  </tr>
+    <% @followers.each do |follow| %>
+        <tr>
+          <td>
+            <%= follow.junior.name %>
+          </td>
+           <%= link_to "フォロー解除", seniors_junior_follow_path(senior_id:current_senior.id, id:follow.id), method: :delete %>
+        </tr>
+    <% end %>    
+</table>

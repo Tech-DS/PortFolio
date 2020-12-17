@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>思い出</h2>
+  <div class="row">
+    <%= form_with model:@timeline, url: timelines_path, method: :post, local:true do |f| %>
+
+    <div class="col-md-4">
+
+      <!--西暦-->
+      <div class="form-group">
+        <%= f.label :year, "いつの出来事ですか？" %>
+        <%= f.text_field :year, placeholder: "〇〇年ごろ" %><br>
+      </div>
+
+      <!--年代-->
+      <div class="form-group">
+        <%= f.label :age, "年代" %>
+        <%= f.select :age, [['幼少期', '幼少期'], ['10代', '10代'], ['20代', '20代'], ['30代', '30代'], ['40代', '40代'], ['50代', '50代'], ['60代', '60代'], ['70代', '70代'], ['80代', '80代'], ['90代', '90代'], ['100代', '100代'] ], {include_blank: '--選択してください--'} %><br>
+      </div>
+
+      <!--出来事-->
+      <div class="form-group">
+        <%= f.label :event, "出来事" %>
+        <%= f.text_field :event, placeholder: "入学、就職、出会い、結婚など" %><br>
+      </div>
+
+      <!--内容-->
+      <div class="form-group">
+        <%= f.label :detail, "くわしく" %>
+        <%= f.text_area :detail, placeholder: "出来事の内容" %><br>
+      </div>
+
+      <!--気持ち-->
+      <div class="form-group">
+        <%= f.label :feel, "感情、思考" %>
+        <%= f.text_area :feel, placeholder: "その時どう思い、何を考え、何を得ましたか" %><br>
+      </div>
+
+      <!--写真-->
+      <div class="form-group">
+        <%= f.label :写真 %>
+        <%= f.attachment_field :image %>
+      </div>
+
+    </div>
+    <div class="col-md-2 offset-2">
+      <%= f.submit "思い出を投稿する", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>

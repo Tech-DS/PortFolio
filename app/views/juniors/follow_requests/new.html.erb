@@ -1,0 +1,13 @@
+<% if current_junior.already_requested?(senior) %>
+ <%= link_to "フォローリクエスト取消", junior_senior_follow_requests_path(senior_id:senior.id), method: :delete %>
+<% else %>
+  <%= link_to "フォローリクエスト送信", junior_senior_follow_requests_path(senior_id:senior.id), method: :post %>
+<% end %>
+
+<% if current_junior.already_followed?(senior) %>
+   すでにフォロー済みです
+<% elsif current_junior.already_requested?(senior) %>
+  <%= link_to "フォローリクエスト取消", junior_senior_follow_requests_path(senior_id:senior.id), method: :delete %>
+<% else %>
+  <%= link_to "フォローリクエスト送信", junior_senior_follow_requests_path(senior_id:senior.id), method: :post %>
+<% end %>

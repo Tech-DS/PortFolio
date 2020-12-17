@@ -1,0 +1,2 @@
+module Seniors::ProfilesHelper
+end

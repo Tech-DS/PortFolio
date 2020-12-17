@@ -14,15 +14,34 @@ Rails.application.routes.draw do
    registrations: 'juniors/registrations'
  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+   resources :posts, only: [] do
+    resources :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+   end
 
    scope module: :seniors do
-     resources :posts, only: [:index, :new, :create, :show, :edit, :destroy]
-     resources :post_comments, only: [:create, :destroy]
-
+     resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+     resources :timelines, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+     resources :profiles, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     root to: 'events#index'
      resources :events
   end
 
 
+   namespace :juniors do
+    resources :seniors, only: [:index, :show] do
+     resource :follow_requests, only:[:create, :destroy]
+    end
+   end
+
+   namespace :seniors do
+    get '/junior_follows' => 'junior_follows#index', as: 'seniors_junior_junior_follows'
+    resources :junior_follows, only:[:destroy, :show]
+    resources :juniors, only: [:show, :edit, :update] do
+      
+      post '/follow_requests/:id' => 'follow_requests#allow', as: 'allow'
+      resources :follow_requests, only:[:index, :show, :destroy]
+    end
+   end
 
 end

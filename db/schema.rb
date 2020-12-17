@@ -10,12 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_225822) do
+ActiveRecord::Schema.define(version: 2020_12_15_163751) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "senior_id"
+    t.integer "junior_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "follow_requests", force: :cascade do |t|
+    t.integer "senior_id"
+    t.integer "junior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "junior_follows", force: :cascade do |t|
+    t.integer "senior_id"
+    t.integer "junior_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +53,15 @@ ActiveRecord::Schema.define(version: 2020_12_11_225822) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_juniors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_juniors_on_reset_password_token", unique: true
+  end
+
+  create_table "poems", force: :cascade do |t|
+    t.integer "senior_id"
+    t.string "top"
+    t.string "mid"
+    t.string "bottom"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -50,6 +81,13 @@ ActiveRecord::Schema.define(version: 2020_12_11_225822) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "senior_follows", force: :cascade do |t|
+    t.integer "senior_id"
+    t.integer "junior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "seniors", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -59,8 +97,26 @@ ActiveRecord::Schema.define(version: 2020_12_11_225822) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_kana"
+    t.string "profile_image_id"
+    t.string "icon_image_id"
+    t.date "birth_date"
+    t.string "address"
+    t.string "phone_number"
     t.index ["email"], name: "index_seniors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_seniors_on_reset_password_token", unique: true
+  end
+
+  create_table "timelines", force: :cascade do |t|
+    t.integer "senior_id"
+    t.string "year"
+    t.string "age"
+    t.string "event"
+    t.text "detail"
+    t.text "feel"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

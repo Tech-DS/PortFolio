@@ -1,0 +1,2 @@
+module Juniors::SeniorsHelper
+end

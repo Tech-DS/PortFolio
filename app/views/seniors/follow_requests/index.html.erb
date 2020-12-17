@@ -1,0 +1,27 @@
+<br>
+
+フォローリクエスト(内容を見せても良いですか？)
+<table class= "table table-condensed">
+  <tr>
+    <td>
+      フォローする人↓
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <% @requests.each do |request| %>
+    <tr>
+      <td>
+        <%= request.junior.name %>
+      </td>
+      <td>
+        <%= link_to "フォロー承認", seniors_junior_allow_path(senior_id:current_senior.id, id:request.id), method: :post %>
+           #次の承認で使うコントローラのパスを記載
+      </td>
+      <td>
+        <%= link_to "フォロー拒否", seniors_junior_follow_request_path(senior_id:current_senior.id, id:request.id), method: :delete %>
+      </td>
+    </tr>
+   <% end %>
+</table>
