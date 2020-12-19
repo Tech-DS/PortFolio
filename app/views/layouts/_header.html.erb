@@ -13,7 +13,7 @@
           <li><%= link_to ' フォロー', seniors_seniors_junior_junior_follows_path, class: 'glyphicon glyphicon-thumbs-up' %></li>
           <li><%= link_to ' ログアウト', destroy_senior_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
         <% elsif junior_signed_in? %>
-          <li><%= link_to ' Home',  class: 'glyphicon glyphicon-home home' %></li>
+          <li><%= link_to ' フォローリクエスト', juniors_seniors_path,  class: 'glyphicon glyphicon-transfer' %></li>
           <li><%= link_to ' Users', class: 'glyphicon glyphicon-user users' %></li>
           <li><%= link_to ' Books',  class: 'glyphicon glyphicon-book books'%></li>
           <li><%= link_to ' logout', destroy_junior_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
