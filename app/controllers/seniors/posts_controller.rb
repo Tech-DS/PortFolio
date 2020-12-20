@@ -1,5 +1,5 @@
 class Seniors::PostsController < ApplicationController
-  before_action :ensure_current_senior, {only: [:edit, :update, :show]}
+  #before_action :ensure_current_senior, {only: [:edit, :update, :show]}
 
   def new
       @post = Post.new
@@ -62,11 +62,11 @@ class Seniors::PostsController < ApplicationController
   end
 
 
-  def ensure_current_senior
-    @post = Post.find(params[:id])
-   if current_senior.id != @post.senior_id.to_i
-    flash[:notice]="権限がありません"
-    redirect_to("/posts/index")
-   end
-  end
+  #def ensure_current_senior
+    #@post = Post.find(params[:id])
+   #if current_senior.id != @post.senior_id.to_i
+    #flash[:notice]="権限がありません"
+    #redirect_to("/posts/index")
+   #end
+ # end
 end

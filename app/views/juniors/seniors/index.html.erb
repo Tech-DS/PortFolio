@@ -1,34 +1,5 @@
 <br>
 <br>
-<div class="containar">
-    <div id="nav-search">
-        <%= form_tag juniors_seniors_path, :method => 'get' do %>
-            <p>
-                <%= text_field_tag :search, params[:search] %>
-                <%= submit_tag "検索", :email => nil %>
-            </p>
-        <% end %>
-    </div>
-</div>
-
-<p>
-    メールアドレスで検索してフォローリクエストを送りましょう！
-</p>
-
-<p>
-    <% @seniors.each do |senior| %>
-      [名前] <%= senior.name %>
-
-     <% if current_junior.already_requested?(senior) %>
-       <%= link_to "フォローリクエスト取消", juniors_senior_follow_requests_path(senior_id:senior.id), method: :delete %>
-     <% else %>
-       <%= link_to "フォローリクエスト送信", juniors_senior_follow_requests_path(senior_id:senior.id), method: :post %>
-     <% end %>
-     <% if current_junior.already_followed?(senior) %>
-      すでにフォロー済みです
-     <% end %>
-    <br>
-    <% end %>
-</p>
-
-</div>
+<% @seniors.each do |senior| %>
+ <%= link_to senior.name, juniors_senior_path(senior) %>
+<% end %>
