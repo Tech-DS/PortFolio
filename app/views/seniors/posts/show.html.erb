@@ -1,76 +1,64 @@
 <div class=container>
- <dev class=row>
-  <h2><%= @post.body %></h2>
-  <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
-  <td><%= link_to "編集" , edit_post_path, class: 'btn btn-outline-info' %></td>
-
-  <div class="comment-list bt style-2" id="comments">
-  <div class="float-wrapper">
-    <h3 class="comment-count"><%= @post.post_comments.count %>件コメント</h3>
-  </div>
-
-
-  <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-  <div class="row">
-    <div class="col-sm-12">
-      <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
-    </div>
-  </div>
-  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-<% end %>
-</div>
-
-<div class="row">
-  <ol>
-  <% @post.post_comments.each do |post_comment| %>
-    <li class="comment">
-      <div class="comment-body bb">
-        <div class="comment-text">
-          <% if post_comment.senior %>
-            <div class="comment-author clearfix">
-              <a href="#" class="link-author"><%= post_comment.senior.name %></a>
-              <span class="comment-meta">
-               <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
-              </span>
-            </div>
-            <div class="comment-entry"><%= post_comment.comment %></div>
-            <div class="comment-destroy">
-              <% if post_comment.senior == current_senior %>
-               <div>
-                 <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
-               </div>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="comment-author clearfix">
-              <a href="#" class="link-author"><%= post_comment.junior.name %></a>
-              <span class="comment-meta">
-               <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
-              </span>
-            </div>
-            <div class="comment-entry"><%= post_comment.comment %></div>
-             <div class="comment-destroy">
-              <% if post_comment.junior == current_junior %>
-               <div>
-                 <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
-               </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
+  <dev class=row>
+      <h2><%= @post.body %></h2>
+      <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
+      <td><%= link_to "編集" , edit_post_path, class: 'btn btn-outline-info' %></td>
+    <div class="comment-list bt style-2" id="comments">
+      <div class="float-wrapper">
+        <h3 class="comment-count"><%= @post.post_comments.count %>件コメント</h3>
       </div>
-    </li>
-  <% end %>
-</ol>
-</div>
+        <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
+          <div class="row">
+            <div class="col-sm-12">
+              <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
+            </div>
+          </div>
+              <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+        <% end %>
+    </div>
 
-
-
-
-
-
-
-  
+  <div class="row">
+    <ol>
+    <% @post.post_comments.each do |post_comment| %>
+      <li class="comment">
+        <div class="comment-body bb">
+          <div class="comment-text">
+            <% if post_comment.senior %>
+              <div class="comment-author clearfix">
+                <a href="#" class="link-author"><%= post_comment.senior.name %></a>
+                <span class="comment-meta">
+                 <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+                </span>
+              </div>
+              <div class="comment-entry"><%= post_comment.comment %></div>
+              <div class="comment-destroy">
+                <% if post_comment.senior == current_senior %>
+                 <div>
+                   <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                 </div>
+                <% end %>
+              </div>
+                <% else %>
+              <div class="comment-author clearfix">
+                <a href="#" class="link-author"><%= post_comment.junior.name %></a>
+                <span class="comment-meta">
+                 <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+                </span>
+              </div>
+              <div class="comment-entry"><%= post_comment.comment %></div>
+               <div class="comment-destroy">
+                  <% if post_comment.junior == current_junior %>
+                 <div>
+                   <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                 </div>
+                  <% end %>
+               </div>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    </ol>
+  </div>
   <td><%= link_to "戻る", posts_path, class: 'btn btn-outline-info' %></td>
- </div>
 </div>

@@ -1,6 +1,7 @@
 class Seniors::JuniorFollowsController < ApplicationController
   def index
     @followers = current_senior.junior_follows.all
+    @seniors = FollowRequest.where(senior_id: current_senior.id)
   end
 
   def destroy

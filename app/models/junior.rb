@@ -15,6 +15,6 @@ class Junior < ApplicationRecord
   end
 
   def already_followed?(senior)
-   self.junior_follows.exists?(senior_id: senior.id)
+    self.junior_follows.exists?(senior_id: senior.id)
   end
 end

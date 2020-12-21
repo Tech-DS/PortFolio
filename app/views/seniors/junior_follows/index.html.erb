@@ -1,17 +1,23 @@
 <br>
 <br>
-<table class= "table table-condensed">
+<div class="container">
   <tr>
     <td>
       名前
     </td>
   </tr>
-    <% @followers.each do |follow| %>
-        <tr>
-          <td>
-            <%= follow.junior.name %>
-          </td>
-           <%= link_to "フォロー解除", seniors_junior_follow_path(senior_id:current_senior.id, id:follow.id), method: :delete %>
-        </tr>
-    <% end %>    
+  　<% if @followers.present? %>
+      <% @followers.each do |follow| %>
+          <tr>
+            <td>
+              <%= follow.junior.name %>
+            </td>
+             <%= link_to "フォロー解除", seniors_junior_follow_path(senior_id:current_senior.id, id:follow.id), method: :delete %>
+          </tr>
+      <% end %>
+    <% end %>
 </table>
+</div>
+
+
+<%= link_to '　フォローリクエスト一覧', seniors_juniors_follow_requests_path, class: 'glyphicon glyphicon-comment' %>

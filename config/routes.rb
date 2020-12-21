@@ -18,31 +18,31 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
    end
-
    scope module: :seniors do
-     resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-     resources :timelines, only: [:index, :new, :create, :show, :edit, :update, :destroy]
-     resources :profiles, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :timelines, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :profiles, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     root to: 'events#index'
-     resources :events
+    resources :events
    end
-   
+
    namespace :juniors do
     resources :seniors, only: [:index, :show] do
-      collection do
-       get :search
+     collection do
+      get :search
      end
      resource :follow_requests, only:[:create, :destroy]
-    end
+     end
     resources :posts, only: [:index, :show, :edit, :update, :destroy]
    end
-  
+
    namespace :seniors do
     get '/junior_follows' => 'junior_follows#index', as: 'seniors_junior_junior_follows'
     resources :junior_follows, only:[:destroy, :show]
+    get 'juniors/follow_requests/' => 'follow_requests#index'
     resources :juniors, only: [:show, :edit, :update] do
       post '/follow_requests/:id' => 'follow_requests#allow', as: 'allow'
-      resources :follow_requests, only:[:index, :show, :destroy]
+      resources :follow_requests, only:[:show, :destroy]
     end
    end
 

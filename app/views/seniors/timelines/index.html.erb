@@ -1,28 +1,32 @@
 <div class="container">
- <h2>思い出</h2>
-
- <%= link_to ' 思い出を書き記す', new_timeline_path, class: 'glyphicon glyphicon-pencil' %>
- <div class="container">
-　<div class="post row col-xs-12">
-  <table class="table table-hover table-inverse">
+  <h2>思い出</h2>
+    <%= link_to ' 思い出を書き記す', new_timeline_path, class: 'glyphicon glyphicon-pencil' %>
+</div>
+<div class="container">
+  <div class="post row col-xs-12">
+    <table class="table table-hover table-inverse">
       <thead>
           <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
       </thead>
       <div class="col-12">
       <tbody>
- <% @timelines.each do |timeline| %>
- <tr>
-  <td><%= timeline.year %></td>
-  <td><%= timeline.age %></td>
-  <td><%= link_to timeline.event, timeline_path(timeline), class: "timeline_#{timeline.id}" %></td>
-  <td><%= link_to "削除" , timeline, class: 'btn btn-outline-info', method: :delete, data: {confirm: "本当に削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
-</tr>
- <% end %>
- </tbody>
+        <% @timelines.each do |timeline| %>
+          <tr>
+            <td><%= timeline.year %></td>
+            <td><%= timeline.age %></td>
+            <td><%= link_to timeline.event, timeline_path(timeline), class: "timeline_#{timeline.id}" %></td>
+            <td><%= link_to "削除" , timeline, class: 'btn btn-outline-info', method: :delete, data: {confirm: "本当に削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </div>
+    </table>
+  </div>
+</div>

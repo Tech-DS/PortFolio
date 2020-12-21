@@ -2,42 +2,35 @@
 <br>
 <div class="container">
   <%= form_with model:@senior, url: profile_path(@senior.id), method: :patch, local:true do |f| %>
-    
     <div class="field row">
-     <%= f.label :名前 %>
-     <%= f.text_field :name, class: 'col-xs-12 profile_address' %>
+      <%= f.label :名前 %>
+      <%= f.text_field :name, class: 'col-xs-12 profile_address' %>
     </div>
-    
     <div class="field row">
-     <%= f.label :ふりがな %>
-     <%= f.text_field :name_kana, class: 'col-xs-12 profile_address' %>
-    </div> 
-    
-    <div class="field row">
-        <%= f.label :プロフィール写真 %>
-        <%= f.attachment_field :profile_image %>
+      <%= f.label :ふりがな %>
+      <%= f.text_field :name_kana, class: 'col-xs-12 profile_address' %>
     </div>
-
-　　<div class="field row">
-        <%= f.label :生年月日 %>
-        <%= f.date_select :birth_date,
+    <div class="field row">
+      <%= f.label :プロフィール写真 %>
+      <%= f.attachment_field :profile_image %>
+    </div>
+    <div class="field row">
+      <%= f.label :生年月日 %>
+      <%= f.date_select :birth_date,
         use_month_numbers: true,
         start_year: 1930, end_year: (Time.now.year - 18),
         default: Date.new(1989, 1, 1) %>
-　　</div>
-
+    </div>
     <div class="field row">
-     <%= f.label :電話番号 %>
-     <%= f.text_field :phone_number, class: 'col-xs-12 profile_phone_number' %>
-   </div>
-
-   <div class="field row">
-     <%= f.label :住所 %>
-     <%= f.text_field :address, class: 'col-xs-12 profile_address' %>
-   </div>
-
-   <div class="actions row">
-        <%= f.submit "プロフィール更新", class: 'btn btn-primary col-xs-12' %>
+      <%= f.label :電話番号 %>
+      <%= f.text_field :phone_number, class: 'col-xs-12 profile_phone_number' %>
+    </div>
+    <div class="field row">
+      <%= f.label :住所 %>
+      <%= f.text_field :address, class: 'col-xs-12 profile_address' %>
+    </div>
+    <div class="actions row">
+      <%= f.submit "プロフィール更新", class: 'btn btn-primary col-xs-12' %>
     </div>
   <% end %>
 </div>

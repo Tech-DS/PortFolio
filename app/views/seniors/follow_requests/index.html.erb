@@ -10,17 +10,16 @@
     <td></td>
   </tr>
 
-  <% @requests.each do |request| %>
+  <% @follow_requests.each do |follow_request| %>
     <tr>
       <td>
-        <%= request.junior.name %>
+        <%= follow_request.junior.name %>
       </td>
       <td>
-        <%= link_to "フォロー承認", seniors_junior_allow_path(senior_id:current_senior.id, id:request.id), method: :post %>
-           #次の承認で使うコントローラのパスを記載
+        <%= link_to "フォロー承認", seniors_junior_allow_path(junior_id: follow_request.junior.id, id: follow_request.id), method: :post %>
       </td>
       <td>
-        <%= link_to "フォロー拒否", seniors_junior_follow_request_path(senior_id:current_senior.id, id:request.id), method: :delete %>
+        <%= link_to "フォロー拒否", seniors_junior_follow_request_path(junior_id: follow_request.junior.id, id: follow_request.id), method: :delete %>
       </td>
     </tr>
    <% end %>
