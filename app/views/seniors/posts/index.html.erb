@@ -39,8 +39,7 @@
            <td><%= post.body %></td>
            <td><%= post.created_at.to_s(:datetime_jp) %></td>
            <td><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></td>
-           <td><%= link_to "詳細" , post, class: 'btn btn-outline-info' %></td>
-           <td><%= link_to "削除" , post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
+           <td><%= link_to "" , post, class: 'btn btn-danger glyphicon glyphicon-trash', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
 		  </tr>
 		  <% end %>
 	  </tbody>
@@ -48,4 +47,5 @@
  </table>
  </div>
 
+<%= paginate @posts %>
 

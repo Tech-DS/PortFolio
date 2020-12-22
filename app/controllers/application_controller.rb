@@ -8,4 +8,13 @@ class ApplicationController < ActionController::Base
       ])
     devise_parameter_sanitizer.permit(:sign_in, keys:[:email])
   end
+
+  def after_sign_in_path_for(resource)
+    case resource
+     when Senior
+       posts_path
+     when Junior
+       juniors_seniors_path
+    end
+  end
 end

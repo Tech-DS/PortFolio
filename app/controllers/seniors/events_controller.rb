@@ -37,7 +37,7 @@ class Seniors::EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-   if @event.update(event_parameter)
+   if @event.update(event_params)
      redirect_to events_path, notice: "編集しました"
    else
      render 'edit'

@@ -14,13 +14,13 @@ class Seniors::PostsController < ApplicationController
        redirect_to posts_path
     else
        @posts = Post.all
-         flash[:notice] = ' エラーです。'
+         flash[:notice] = "エラーです。"
         render "index"
     end
   end
 
   def index
-    @posts = current_senior.posts.order(created_at: :desc)
+    @posts = current_senior.posts.page(params[:page]).order(created_at: :desc)
     @post = Post.new
     #@senior = Senior.find(current_senior.id)
   end

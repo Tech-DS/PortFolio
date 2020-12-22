@@ -10,7 +10,6 @@ class Senior < ApplicationRecord
   has_many :follow_requests, dependent: :destroy
   has_many :junior_follows, dependent: :destroy
   has_many :events, dependent: :destroy
-
   def self.search(search)
     Senior.where(email: "#{search}")
   end

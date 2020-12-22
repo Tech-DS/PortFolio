@@ -2,6 +2,8 @@ Rails.application.routes.draw do
  get 'homes/top'
  root "homes#top"
  get 'home/about' => 'homes#about', as: 'about'
+ get 'home/option_senior' => 'homes#option_senior', as: 'option_senior'
+ get 'home/option_junior' => 'homes#option_junior', as: 'option_junior'
 
  devise_for :seniors, controllers: {
    sessions:      'seniors/sessions',

@@ -1,13 +1,14 @@
 <br>
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>タイトル</strong>
+  <strong>予定</strong>
   <%= @event.title %>
 </p>
 
 <p>
-  <strong>時間</strong>
+  <strong>いつ？</strong>
   <%= @event.start_time.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
@@ -18,3 +19,5 @@
 
 <%= link_to '編集', edit_event_path(@event) %> |
 <%= link_to '戻る', events_path %>
+
+</div>

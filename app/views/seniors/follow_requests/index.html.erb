@@ -1,26 +1,32 @@
 <br>
+<div class="container">
+  <h2>フォローリクエスト</h2>
 
-フォローリクエスト(内容を見せても良いですか？)
-<table class= "table table-condensed">
-  <tr>
-    <td>
-      フォローする人↓
-    </td>
-    <td></td>
-    <td></td>
-  </tr>
+  (内容を見せても良いですか？)
+  <div class="post row col-xs-12">
+    <table class= "table table-condensed">
+      <tr>
+        <td>
+          フォローする人↓
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
 
-  <% @follow_requests.each do |follow_request| %>
-    <tr>
-      <td>
-        <%= follow_request.junior.name %>
-      </td>
-      <td>
-        <%= link_to "フォロー承認", seniors_junior_allow_path(junior_id: follow_request.junior.id, id: follow_request.id), method: :post %>
-      </td>
-      <td>
-        <%= link_to "フォロー拒否", seniors_junior_follow_request_path(junior_id: follow_request.junior.id, id: follow_request.id), method: :delete %>
-      </td>
-    </tr>
-   <% end %>
-</table>
+    <% @follow_requests.each do |follow_request| %>
+      <tr>
+        <td>
+          <h4><%= follow_request.junior.name %></h4>
+        </td>
+        <td>
+          <%= link_to "フォロー承認", seniors_junior_allow_path(junior_id: follow_request.junior.id, id: follow_request.id), method: :post, class: 'btn btn-primary' %>
+        </td>
+        <td>
+          <%= link_to "フォロー拒否", seniors_junior_follow_request_path(junior_id: follow_request.junior.id, id: follow_request.id), method: :delete, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+     <% end %>
+     <tr><td>フォロー一覧でお孫さんを確認してみてください！</td></tr>
+    </table>
+  </div>
+</div>

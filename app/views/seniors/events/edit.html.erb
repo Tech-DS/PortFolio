@@ -1,24 +1,26 @@
-<
+<br>
+<div class="container">
 <%= form_with(model: @event, local: true) do |f| %>
 
   <div class="title">
-    <%= f.label :title %>
+    <%= f.label :予定 %>
     <%= f.text_field :title %>
   </div>
 
     <div class="time">
-    <%= f.label :start_time %>
+    <%= f.label :いつ？ %>
     <%= f.datetime_select :start_time %>
   </div>
 
   <div class="content">
-    <%= f.label :content %>
+    <%= f.label :内容 %>
     <%= f.text_field :content %>
   </div>
 
 
   <div class="submit">
-    <%= f.submit %>
+    <%= f.submit "編集する"%>
   </div>
 
 <% end %>
+</div>

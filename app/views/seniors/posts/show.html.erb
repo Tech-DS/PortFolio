@@ -1,8 +1,12 @@
 <div class=container>
   <dev class=row>
-      <h2><%= @post.body %></h2>
       <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
-      <td><%= link_to "編集" , edit_post_path, class: 'btn btn-outline-info' %></td>
+      <h2><%= @post.body %></h2>
+
+      <% if senior_signed_in? && @post.senior_id == current_senior.id %>
+       <td><%= link_to "編集" , edit_post_path, class: 'btn btn-success' %></td>
+      <% end %>
+
     <div class="comment-list bt style-2" id="comments">
       <div class="float-wrapper">
         <h3 class="comment-count"><%= @post.post_comments.count %>件コメント</h3>
@@ -60,5 +64,8 @@
     <% end %>
     </ol>
   </div>
-  <td><%= link_to "戻る", posts_path, class: 'btn btn-outline-info' %></td>
+
+  <% if senior_signed_in? && @post.senior_id == current_senior.id %>
+   <td><%= link_to "戻る", posts_path, class: 'btn btn-outline-info' %></td>
+  <% end %>
 </div>

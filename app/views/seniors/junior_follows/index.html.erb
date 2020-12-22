@@ -1,23 +1,28 @@
 <br>
 <br>
 <div class="container">
-  <tr>
-    <td>
-      名前
-    </td>
-  </tr>
-  　<% if @followers.present? %>
-      <% @followers.each do |follow| %>
-          <tr>
-            <td>
-              <%= follow.junior.name %>
-            </td>
-             <%= link_to "フォロー解除", seniors_junior_follow_path(senior_id:current_senior.id, id:follow.id), method: :delete %>
-          </tr>
+  <h2>フォロー</h2>
+  <div class="row col-xs-8">
+   <%= link_to '　お孫さんからのフォローリクエストを確認', seniors_juniors_follow_requests_path, class: 'btn btn-warning glyphicon glyphicon-comment' %>
+  </div>
+  <div class="row col-xs-8">
+    <table class="table table-hover table-inverse">
+      <tr>
+        <td>
+          あなたをフォロー中のお孫さん↓（つぶやきの内容を見ています）
+        </td>
+        <td></td>
+      </tr>
+    　<% if @followers.present? %>
+        <% @followers.each do |follow| %>
+            <tr>
+              <td>
+                <%= follow.junior.name %>
+              </td>
+               <td><%= link_to "フォロー解除", seniors_junior_follow_path(senior_id:current_senior.id, id:follow.id), method: :delete, class: 'btn btn-danger'  %></td>
+            </tr>
+        <% end %>
       <% end %>
-    <% end %>
-</table>
+    </table>
+  </div>
 </div>
-
-
-<%= link_to '　フォローリクエスト一覧', seniors_juniors_follow_requests_path, class: 'glyphicon glyphicon-comment' %>

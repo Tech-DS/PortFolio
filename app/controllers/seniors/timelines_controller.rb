@@ -16,6 +16,7 @@ class Seniors::TimelinesController < ApplicationController
   end
 
   def index
+    @senior = Senior.find(current_senior.id)
     @timelines = current_senior.timelines.order(year: :asc)
     @timeline = Timeline.new
   end
