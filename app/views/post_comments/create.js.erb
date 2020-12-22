@@ -1,29 +1,5 @@
-<div class=container>
-  <dev class=row>
-      <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
-      <h2><%= @post.body %></h2>
-
-      <% if senior_signed_in? && @post.senior_id == current_senior.id %>
-       <td><%= link_to "編集" , edit_post_path, class: 'btn btn-success' %></td>
-      <% end %>
-
-    <div class="comment-list bt style-2" id="comments">
-      <div class="float-wrapper">
-        <h3 class="comment-count"><%= @post.post_comments.count %>件コメント</h3>
-      </div>
-        <%= form_with(model:[@post, @post_comment]) do |f| %>
-          <div class="row">
-            <div class="col-sm-12">
-              <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
-            </div>
-          </div>
-              <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-        <% end %>
-    </div>
-
-  <div class="row">
-    <ol id="post_comments">
-    <% @post.post_comments.each do |post_comment| %>
+$('#post_comments').html(
+  `<% @post_comments.each do |post_comment| %>
       <li class="comment">
         <div class="comment-body bb">
           <div class="comment-text">
@@ -61,12 +37,6 @@
           </div>
         </div>
       </li>
-    <% end %>
-    </ol>
-  </div>
-
-  <% if senior_signed_in? && @post.senior_id == current_senior.id %>
-   <td><%= link_to "戻る", posts_path, class: 'btn btn-outline-info' %></td>
-  <% end %>
-</div>
-
+    <% end %>`
+)
+$('#post_comment_comment').val('')
