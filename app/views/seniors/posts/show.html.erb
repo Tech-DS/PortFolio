@@ -3,9 +3,31 @@
       <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
       <h2><%= @post.body %></h2>
 
+      <!--senior編集-->
       <% if senior_signed_in? && @post.senior_id == current_senior.id %>
        <td><%= link_to "編集" , edit_post_path, class: 'btn btn-success' %></td>
       <% end %>
+
+      <!--juniorいいね-->
+    <div id="favoreites">
+      <% if junior_signed_in?  %>
+      <% if @post.favorited_by?(current_junior) %>
+        <li>
+          <%= link_to post_favorites_path(@post), remote: true, method: :delete do %>
+            <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
+          <%= @post.favorites.count %> いいね
+        <% end %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to post_favorites_path(@post), remote: true, method: :post do %>
+            <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+          <%= @post.favorites.count %> いいね
+        <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    </div>
 
     <div class="comment-list bt style-2" id="comments">
       <div class="float-wrapper">
@@ -65,8 +87,13 @@
     </ol>
   </div>
 
+  <!--senior戻る-->
   <% if senior_signed_in? && @post.senior_id == current_senior.id %>
    <td><%= link_to "戻る", posts_path, class: 'btn btn-outline-info' %></td>
   <% end %>
-</div>
 
+  <!--junior戻る-->
+  <% if junior_signed_in? %>
+   <td><%= link_to "戻る", juniors_senior_path, class: 'btn btn-outline-info' %></td>
+  <% end %>
+</div>

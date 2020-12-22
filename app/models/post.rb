@@ -9,3 +9,5 @@ class Post < ApplicationRecord
     favorites.where(junior_id: junior.id).exists?
   end
 end
+
+

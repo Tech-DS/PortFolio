@@ -9,6 +9,7 @@ class Junior < ApplicationRecord
   has_many :junior_follows, dependent: :destroy
   has_many :follow_seniors, through: :junior_follows, source: :senior
   has_many :follow_requests
+  has_many :favorites, dependent: :destroy
 
   def already_requested?(senior)
     self.follow_requests.exists?(senior_id: senior.id)
