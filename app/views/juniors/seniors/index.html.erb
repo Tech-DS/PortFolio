@@ -16,6 +16,7 @@
                 <th><%= attachment_image_tag senior, :profile_image, :fill, 40, 40, format: 'jpeg' %></th>
                 <th><%= senior.name %></th>
                 <th><%= link_to "つぶやき一覧", juniors_senior_path(senior) %></th>
+                <th><%= link_to "年表",  juniors_seniors_timeline_path(senior) %></th>
             </tr>
             <% end %>
         </tbody>

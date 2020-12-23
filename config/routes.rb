@@ -28,8 +28,10 @@ Rails.application.routes.draw do
     resources :events
    end
 
+   get 'junior/seniors/:id/timeline' => 'juniors/seniors#timeline', as: 'juniors_seniors_timeline'
+
    namespace :juniors do
-    resources :seniors, only: [:index, :show] do
+    resources :seniors, only: [:index, :show,] do
      collection do
       get :search
      end

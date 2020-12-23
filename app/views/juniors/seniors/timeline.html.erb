@@ -1,0 +1,31 @@
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="post row col-xs-12">
+    <table class="table table-hover table-inverse">
+        <thead>
+            <tr>
+                <th>年表</th>
+                <th colspan="4"></th>
+            </tr>
+        </thead>
+      <div class="col-12">
+        <tbody>
+           <td><%= @senior.birth_date %></td>
+           <td>誕生</td>
+        </tbody>
+        <tbody>
+        <% @senior.timelines.each do |timeline| %>
+          <tr>
+            <td><%= timeline.year %></td>
+            <td><%= timeline.age %></td>
+            <td><%= timeline.event %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </div>
+    </table>
+  </div>
+</div>

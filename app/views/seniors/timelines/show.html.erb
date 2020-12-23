@@ -19,7 +19,9 @@
           <td><%= @timeline.event %></td>
           <td><%= @timeline.detail %></td>
           <td><%= @timeline.feel %></td>
-          <td><%= attachment_image_tag @timeline, :image, :fill, 100, 100, format: 'jpeg' %></td>
+        </tr>
+        <tr>
+          <td><%= attachment_image_tag @timeline, :image, :fill, 600, 500, format: 'jpeg' %></td>
         </tr>
       </tbody>
     </div>
