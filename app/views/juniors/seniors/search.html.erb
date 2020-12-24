@@ -1,13 +1,40 @@
-<% if current_junior.already_requested?(senior) %>
- <%= link_to "フォローリクエスト取消", junior_senior_follow_requests_path(senior_id:senior.id), method: :delete %>
-<% else %>
-  <%= link_to "フォローリクエスト送信", junior_senior_follow_requests_path(senior_id:senior.id), method: :post %>
-<% end %>
+<div class="search-containar">
+   <h3>フォローリクエスト</h3>
+  <div class="row col-xs-12">
+    <div id="nav-search">
+      <%= form_tag search_juniors_seniors_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "検索", :email => nil %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row col-xs-12">
+    <h3>
+      じぃじとばぁばをメールアドレスで検索して<br>
+      フォローリクエストを送りましょう！
+    </h3>
+    <h4>
+      (メールアドレスを間違わない様に気をつけましょう！)<br>
+      (※リクエスト送信後に直接承認のお願いをしましょう！)
+    </h4>
+  </div>
+  <div class="row col-xs-12">
+    <h4>
+        <% @seniors.each do |senior| %>
+          [名前] <%= senior.name %>　さん
 
-<% if current_junior.already_followed?(senior) %>
-   すでにフォロー済みです
-<% elsif current_junior.already_requested?(senior) %>
-  <%= link_to "フォローリクエスト取消", junior_senior_follow_requests_path(senior_id:senior.id), method: :delete %>
-<% else %>
-  <%= link_to "フォローリクエスト送信", junior_senior_follow_requests_path(senior_id:senior.id), method: :post %>
-<% end %>
+         <% if current_junior.already_requested?(senior) %>
+           <%= link_to "フォローリクエスト取消", juniors_senior_follow_requests_path(senior_id:senior.id), method: :delete %>
+         <% else %>
+           <%= link_to "フォローリクエスト送信", juniors_senior_follow_requests_path(senior_id:senior.id), method: :post %>
+         <% end %>
+         <% if current_junior.already_followed?(senior) %>
+          すでにフォロー済みですよ！
+         <% end %>
+          <br>
+        <% end %>
+    </h4>
+  </div>
+</div>

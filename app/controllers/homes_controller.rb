@@ -1,8 +1,14 @@
 class HomesController < ApplicationController
   def top
   end
-  
+
   def about
-    @seniors= Senior.all
   end
+
+  def option_senior
+  end
+
+  def option_junior
+  end
+
 end

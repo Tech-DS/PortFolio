@@ -3,10 +3,10 @@
   <%= form_with model:@post, url: posts_path, method: :post, local:true do |f| %>
     <div class="field row">
         <%= f.label :こんな事があったよ %>
-        <%= f.text_area :body, class: 'col-xs-12 post_body' %>
+        <%= f.text_area :body, class: 'col-xs-12 post_body', placeholder: "ふと思い立ったこと、伝えたいことを書いたり、写真を送ったりします" %>
     </div>
     <div class="field row">
-        <%= f.label :写真 %>
+        <%= f.label :写真だよ %>
         <%= f.attachment_field :image %>
     </div>
     <div class="actions row">
@@ -33,19 +33,19 @@
       <tbody>
           <% @posts.each do |post| %>
           <tr>
-        　 <td><%#= attachment_image_tag @seniors, :profile_image, :fill, 30, 30, format: 'jpeg' %></td>
-        　 <td><%= @seniors.name %></td>
+        　 <td><%= attachment_image_tag post.senior, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no-image-icon.jpg" %></td>
+        　 <td><%= post.senior.name %></td>
            <td><%= attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg' %></td>
            <td><%= post.body %></td>
-           <td><%= post.created_at.to_s(:datetime_base) %></td>
+           <td><%= post.created_at.to_s(:datetime_jp) %></td>
            <td><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></td>
-           <td><%= link_to "詳細" , post, class: 'btn btn-outline-info' %></td>
-           <td><%= link_to "削除" , post, class: 'btn btn-outline-info', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
-		  </tr>
-		  <% end %>
-	  </tbody>
-	  </div>
- </table>
+           <td><%= link_to "" , post, class: 'btn btn-danger glyphicon glyphicon-trash', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
+		      </tr>
+		      <% end %>
+	    </tbody>
+	    </div>
+   </table>
  </div>
 
+<%= paginate @posts %>
 

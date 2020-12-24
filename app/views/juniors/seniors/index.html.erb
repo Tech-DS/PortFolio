@@ -1,34 +1,24 @@
-<br>
-<br>
-<div class="containar">
-    <div id="nav-search">
-        <%= form_tag juniors_seniors_path, :method => 'get' do %>
-            <p>
-                <%= text_field_tag :search, params[:search] %>
-                <%= submit_tag "検索", :email => nil %>
-            </p>
-        <% end %>
-    </div>
-</div>
-
-<p>
-    現在登録されているユーザは次のとおりです。
-</p>
-
-<p>
-    <% @seniors.each do |senior| %>
-      [名前] <%= senior.name %>
-
-     <% if current_junior.already_requested?(senior) %>
-       <%= link_to "フォローリクエスト取消", juniors_senior_follow_requests_path(senior_id:senior.id), method: :delete %>
-     <% else %>
-       <%= link_to "フォローリクエスト送信", juniors_senior_follow_requests_path(senior_id:senior.id), method: :post %>
-     <% end %>
-     <% if current_junior.already_followed?(senior) %>
-      すでにフォロー済みです
-     <% end %>
-    <br>
-    <% end %>
-</p>
-
+<div class="container">
+  <div class="post row col-xs-12">
+    <table class="table table-hover table-inverse">
+        <thead>
+            <tr>
+                <th>フォロー中のじぃじとばぁば</th>
+                <th colspan="4"></th>
+            </tr>
+        </thead>
+      <div class="col-12">
+        <tbody>
+            <% @seniors.each do |senior| %>
+            <tr>
+                <th><%= attachment_image_tag senior, :profile_image, :fill, 40, 40, format: 'jpeg' %></th>
+                <th><%= senior.name %></th>
+                <th><%= link_to "つぶやき一覧", juniors_senior_path(senior) %></th>
+                <th><%= link_to "年表",  juniors_seniors_timeline_path(senior) %></th>
+            </tr>
+            <% end %>
+        </tbody>
+      </div>
+    </table>
+  </div>
 </div>

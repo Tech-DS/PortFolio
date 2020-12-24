@@ -1,0 +1,26 @@
+
+<div class="container">
+  <div class="post row col-xs-12">
+    <table class="table table-hover table-inverse">
+        <thead>
+            <tr>
+                <th>つぶやき一覧</th>
+                <th colspan="4"></th>
+            </tr>
+        </thead>
+      <div class="col-12">
+        <tbody>
+            <% @senior.posts.each do |post| %>
+            <tr>
+                <th><%= attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg' %></th>
+                <th><%= post.senior.name %></th>
+                <th><%= post.body %></th>
+                <th><%= post.created_at.to_s(:datetime_jp) %></th>
+                <th><%= link_to "コメントする", post %></th>
+            </tr>
+            <% end %>
+        </tbody>
+      </div>
+    </table>
+  </div>
+</div>
