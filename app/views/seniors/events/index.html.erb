@@ -1,7 +1,7 @@
 <br>
 <div class="container">
 
-<h2>カレンダー</h2>
+<h2>カレンダー(今月の予定)</h2>
 
 <table>
   <thead>
@@ -24,12 +24,13 @@
         <td><%= link_to '削除',event_path(event.id), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
       </tr>
     <% end %>
+    <%= paginate @events %>
   </tbody>
 </table>
 
 <br>
 
-<h3><%= link_to '予定を入力', new_event_path, class: 'btn btn-primary' %></h3>
+<h3><%= link_to 'ここで予定を入力', new_event_path, class: 'btn btn-primary' %></h3>
 
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>

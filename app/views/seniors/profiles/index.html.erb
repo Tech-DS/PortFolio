@@ -20,12 +20,12 @@
       <div class="col-12">
         <tbody>
             <tr>
-              <td><%= attachment_image_tag @senior, :profile_image, :fill, 100, 100, format: 'jpeg' %></td>
-              <td><%= @senior.name %></td>
-              <td><%= @senior.name_kana %></td>
-              <td><%= @senior.birth_date %></td>
-              <td><%= @senior.address %></td>
-              <td><%= @senior.phone_number %></td>
+              <td><%= attachment_image_tag @senior, :profile_image, :fill, 200, 200, format: 'jpeg' %></td>
+              <td><h3><%= @senior.name %></h3></td>
+              <td><h3><%= @senior.name_kana %></h3></td>
+              <td><h4><%= @senior.birth_date %></h4></td>
+              <td><h4><%= @senior.address %></h4></td>
+              <td><h4><%= @senior.phone_number %></h4></td>
             </tr>
         </tbody>
       </div>

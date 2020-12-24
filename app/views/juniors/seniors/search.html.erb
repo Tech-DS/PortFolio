@@ -1,7 +1,5 @@
-<br>
-<br>
-<div class="containar">
-   <strong>フォローリクエスト</strong>
+<div class="search-containar">
+   <h3>フォローリクエスト</h3>
   <div class="row col-xs-12">
     <div id="nav-search">
       <%= form_tag search_juniors_seniors_path, :method => 'get' do %>
@@ -13,14 +11,17 @@
     </div>
   </div>
   <div class="row col-xs-12">
-    <p>
+    <h3>
       じぃじとばぁばをメールアドレスで検索して<br>
-      フォローリクエストを送りましょう！<br>
-      (メールアドレスを間違わない様に気をつけましょう！)
-    </p>
+      フォローリクエストを送りましょう！
+    </h3>
+    <h4>
+      (メールアドレスを間違わない様に気をつけましょう！)<br>
+      (※リクエスト送信後に直接承認のお願いをしましょう！)
+    </h4>
   </div>
   <div class="row col-xs-12">
-    <p>
+    <h4>
         <% @seniors.each do |senior| %>
           [名前] <%= senior.name %>　さん
 
@@ -34,6 +35,6 @@
          <% end %>
           <br>
         <% end %>
-    </p>
+    </h4>
   </div>
 </div>

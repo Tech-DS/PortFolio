@@ -1,6 +1,6 @@
 class Seniors::EventsController < ApplicationController
   def index
-    @events = current_senior.events
+    @events = current_senior.events.page(params[:page]).order(created_at: :desc)
   end
 
   def new
@@ -40,7 +40,7 @@ class Seniors::EventsController < ApplicationController
    if @event.update(event_params)
      redirect_to events_path, notice: "編集しました"
    else
-     render 'edit'
+     render 'index'
    end
   end
 

@@ -3,10 +3,10 @@
   <%= form_with model:@post, url: posts_path, method: :post, local:true do |f| %>
     <div class="field row">
         <%= f.label :こんな事があったよ %>
-        <%= f.text_area :body, class: 'col-xs-12 post_body' %>
+        <%= f.text_area :body, class: 'col-xs-12 post_body', placeholder: "ふと思い立ったこと、伝えたいことを書いたり、写真を送ったりします" %>
     </div>
     <div class="field row">
-        <%= f.label :写真 %>
+        <%= f.label :写真だよ %>
         <%= f.attachment_field :image %>
     </div>
     <div class="actions row">
