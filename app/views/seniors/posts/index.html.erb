@@ -38,6 +38,7 @@
           <td><%= post.senior.name %></td>
           <td><%= attachment_image_tag post, :image, :fill, 100, 100, format: 'jpeg' %></td>
           <td><%= post.body %></td>
+          <td><span class="sentiment-score">感情分析スコア<%= post.score %></span></td>
           <td><%= post.created_at.to_s(:datetime_jp) %></td>
           <td><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></td>
           <td><%= link_to "" , post, class: 'btn btn-danger glyphicon glyphicon-trash', method: :delete, data: {confirm: "投稿記事を削除しますか？", cancel: "キャンセル", commit: "削除する", title: "削除の確認"} %></td>
