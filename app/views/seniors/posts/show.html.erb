@@ -2,6 +2,7 @@
   <dev class=row>
       <%= attachment_image_tag @post, :image, :fill, 400, 400, format: 'jpeg' %>
       <h2><%= @post.body %></h2>
+      <p class="sentiment-score">感情分析スコア[<%= @post.score %>]</p>
 
       <!--senior編集-->
       <% if senior_signed_in? && @post.senior_id == current_senior.id %>

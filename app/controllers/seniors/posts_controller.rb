@@ -8,6 +8,7 @@ class Seniors::PostsController < ApplicationController
      @senior = current_senior
      @post = Post.new(post_params)
      @post.senior_id = current_senior.id
+     @post.score = Language.get_data(post_params[:body])
     if @post.save
         flash[:notice] = "投稿しました。"
        @posts = Post.all
