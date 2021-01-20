@@ -18,7 +18,6 @@
 
 ### 主な利用シーン
 祖父母や孫が好きな時に感じたままに写真や文章を投稿し閲覧する、祖父母がふと過去の出来事を思い出した時その時の感情や教訓を書き記す。
-祖父母が趣味として外部に向けて川柳を発信するサイトも連携する。
 
 ## 設計書
 https://docs.google.com/spreadsheets/d/1-ZSZL5oy2Pp-89suFlCVsXHFh3J7A3EJS52OiAc2-L4/edit?usp=sharing
